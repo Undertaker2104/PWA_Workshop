@@ -1,89 +1,114 @@
+<!-- Create a simple Program to build the Calculator in JavaScript using with HTML and CSS web languages. -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Things PWA</title>
+    <title> JavaScript Calculator </title>
+    <link rel="manifest" href="src/manifest.json">
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#007bff">
-    <meta name="description" content="A Progressive Web Application for Smart Things">
-
-    <!-- Apple PWA Support -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="SmartThings">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="icon-192.png">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
         h1 {
-            color: #333;
             text-align: center;
-        }
-
-        p {
-            line-height: 1.6;
-            color: #666;
-        }
-
-        .button {
-            background-color: #007bff;
+            padding: 22px;
+            background-color: skyblue;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
         }
 
-        .button:hover {
-            background-color: #0056b3;
+        #clear {
+            width: 270px;
+            border: 3px solid gray;
+            border-radius: 3px;
+            padding: 20px;
+            background-color: red;
+        }
+
+        .formstyle {
+            width: 300px;
+            height: 530px;
+            margin: auto;
+            border: 3px solid skyblue;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+
+
+        input {
+            width: 20px;
+            background-color: green;
+            color: white;
+            border: 3px solid gray;
+            border-radius: 5px;
+            padding: 26px;
+            margin: 5px;
+            font-size: 15px;
+        }
+
+
+        #calc {
+            width: 250px;
+            border: 5px solid black;
+            border-radius: 3px;
+            padding: 20px;
+            margin: auto;
         }
     </style>
+
 </head>
 
 <body>
-    <div class="container">
-        <h1>Welcome to Smart Things PWA</h1>
-        <p>This is a basic HTML page for your Progressive Web Application project. You can start building your Smart
-            Things PWA from here.</p>
 
-        <h2>Features</h2>
-        <ul>
-            <li>Responsive design</li>
-            <li>Modern styling</li>
-            <li>Ready for PWA enhancements</li>
-        </ul>
+    <h1> Calculator Program in JavaScript </h1>
+    <div class="formstyle">
+        <form name="form1">
 
-        <h2>Getting Started</h2>
-        <p>Add your JavaScript functionality, service workers, and manifest file to make this a fully functional PWA.
-        </p>
+            <!-- This input box shows the button pressed by the user in calculator. -->
+            <input id="calc" type="text" name="answer"> <br> <br>
+            <!-- Display the calculator button on the screen. -->
+            <!-- onclick() function display the number prsses by the user. -->
+            <input type="button" value="1" onclick="form1.answer.value += '1' ">
+            <input type="button" value="2" onclick="form1.answer.value += '2' ">
+            <input type="button" value="3" onclick="form1.answer.value += '3' ">
+            <input type="button" value="+" onclick="form1.answer.value += '+' ">
+            <br> <br>
 
-        <button class="button" onclick="alert('Hello from your Smart Things PWA!')">Click Me</button>
+            <input type="button" value="4" onclick="form1.answer.value += '4' ">
+            <input type="button" value="5" onclick="form1.answer.value += '5' ">
+            <input type="button" value="6" onclick="form1.answer.value += '6' ">
+            <input type="button" value="-" onclick="form1.answer.value += '-' ">
+            <br> <br>
+
+            <input type="button" value="7" onclick="form1.answer.value += '7' ">
+            <input type="button" value="8" onclick="form1.answer.value += '8' ">
+            <input type="button" value="9" onclick="form1.answer.value += '9' ">
+            <input type="button" value="*" onclick="form1.answer.value += '*' ">
+            <br> <br>
+
+
+            <input type="button" value="/" onclick="form1.answer.value += '/' ">
+            <input type="button" value="0" onclick="form1.answer.value += '0' ">
+            <input type="button" value="." onclick="form1.answer.value += '.' ">
+            <!-- When we click on the '=' button, the onclick() shows the sum results on the calculator screen. -->
+            <input type="button" value="=" onclick="form1.answer.value = eval(form1.answer.value) ">
+            <br>
+            <!-- Display the Cancel button and erase all data entered by the user. -->
+            <input type="button" value="Clear All" onclick="form1.answer.value = ' ' " id="clear">
+            <br>
+
+        </form>
     </div>
-
-    <script src="app.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            console.log("Service Worker supported");
+            navigator.serviceWorker.register("./sw.js").then(ServiceWorkerRegistration => {
+                console.log("SW Registered");
+                console.log(ServiceWorkerRegistration);
+            }).catch(error => {
+                console.log("SW Registration failed");
+                console.log(error);
+            })
+        }
+    </script>
 </body>
 
 </html>
